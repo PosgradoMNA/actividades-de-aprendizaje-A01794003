@@ -1,0 +1,278 @@
+[
+  {
+    "SALE_ID": 1,
+    "SALE_Date": "01/12/23",
+    "Product": "Rustic breakfast",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 1,
+    "SALE_Date": "01/12/23",
+    "Product": "Sandwich with salad",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 1,
+    "SALE_Date": "01/12/23",
+    "Product": "Raw legums",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 2,
+    "SALE_Date": "01/12/23",
+    "Product": "Fresh stawberry",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 2,
+    "SALE_Date": "01/12/23",
+    "Product": "Pears juice",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 3,
+    "SALE_Date": "01/12/23",
+    "Product": "Green smoothie",
+    "Quantity": 3
+  },
+  {
+    "SALE_ID": 3,
+    "SALE_Date": "01/12/23",
+    "Product": "Cuban sandwiche",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 3,
+    "SALE_Date": "01/12/23",
+    "Product": "Hazelnut in black ceramic bowl",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 4,
+    "SALE_Date": "01/12/23",
+    "Product": "Tomatoes",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 4,
+    "SALE_Date": "01/12/23",
+    "Product": "Plums",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 4,
+    "SALE_Date": "01/12/23",
+    "Product": "Fresh blueberries",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 5,
+    "SALE_Date": "01/12/23",
+    "Product": "Green smoothie",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 5,
+    "SALE_Date": "01/12/23",
+    "Product": "Corn",
+    "Quantity": 3
+  },
+  {
+    "SALE_ID": 5,
+    "SALE_Date": "01/12/23",
+    "Product": "French fries",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Ground beef meat burger",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Hazelnut in black ceramic bowl",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Cherry",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Homemade bread",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Smoothie with chia seeds",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Corn",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Peaches on branch",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 6,
+    "SALE_Date": "01/12/23",
+    "Product": "Pesto with basil",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 7,
+    "SALE_Date": "01/12/23",
+    "Product": "Plums",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 7,
+    "SALE_Date": "01/12/23",
+    "Product": "Fresh blueberries",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 7,
+    "SALE_Date": "01/12/23",
+    "Product": "Green smoothie",
+    "Quantity": 4
+  },
+  {
+    "SALE_ID": 7,
+    "SALE_Date": "01/12/23",
+    "Product": "Corn",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 7,
+    "SALE_Date": "01/12/23",
+    "Product": "French fries",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 8,
+    "SALE_Date": "01/12/23",
+    "Product": "Ground beef meat burger",
+    "Quantity": 3
+  },
+  {
+    "SALE_ID": 8,
+    "SALE_Date": "01/12/23",
+    "Product": "Hazelnut in black ceramic bowl",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 8,
+    "SALE_Date": "01/12/23",
+    "Product": "Cherry",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 8,
+    "SALE_Date": "02/12/23",
+    "Product": "Homemade bread",
+    "Quantity": 5
+  },
+  {
+    "SALE_ID": 8,
+    "SALE_Date": "02/12/23",
+    "Product": "Smoothie with chia seeds",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 8,
+    "SALE_Date": "02/12/23",
+    "Product": "Corn",
+    "Quantity": 10
+  },
+  {
+    "SALE_ID": 8,
+    "SALE_Date": "02/12/23",
+    "Product": "Rustic breakfast",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 9,
+    "SALE_Date": "02/12/23",
+    "Product": "Sandwich with salad",
+    "Quantity": 3
+  },
+  {
+    "SALE_ID": 9,
+    "SALE_Date": "02/12/23",
+    "Product": "Raw legums",
+    "Quantity": 20
+  },
+  {
+    "SALE_ID": 9,
+    "SALE_Date": "02/12/23",
+    "Product": "Fresh stawberry",
+    "Quantity": 4
+  },
+  {
+    "SALE_ID": 9,
+    "SALE_Date": "02/12/23",
+    "Product": "Pears juice",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 9,
+    "SALE_Date": "02/12/23",
+    "Product": "Green smoothie",
+    "Quantity": 8
+  },
+  {
+    "SALE_ID": 9,
+    "SALE_Date": "02/12/23",
+    "Product": "Cuban sandwiche",
+    "Quantity": 9
+  },
+  {
+    "SALE_ID": 10,
+    "SALE_Date": "02/12/23",
+    "Product": "Hazelnut in black ceramic bowl",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 10,
+    "SALE_Date": "02/12/23",
+    "Product": "Tomatoes",
+    "Quantity": 1
+  },
+  {
+    "SALE_ID": 10,
+    "SALE_Date": "02/12/23",
+    "Product": "Plums",
+    "Quantity": 2
+  },
+  {
+    "SALE_ID": 10,
+    "SALE_Date": "02/12/23",
+    "Product": "Fresh blueberries",
+    "Quantity": 3
+  },
+  {
+    "SALE_ID": 10,
+    "SALE_Date": "02/12/23",
+    "Product": "Green smoothie",
+    "Quantity": 5
+  },
+  {
+    "SALE_ID": 10,
+    "SALE_Date": "02/12/23",
+    "Product": "Corn",
+    "Quantity": 4
+  }
+]
