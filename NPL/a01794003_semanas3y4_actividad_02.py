@@ -36,6 +36,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+from sklearn.linear_model import LogisticRegression
 import re
 import string
 from google.colab import drive
@@ -191,7 +192,18 @@ Sabemos que existen comentarios muy diversos. Por ejemplo, observa los registros
 
 Cuando apliques el proceso de limpieza en la pregunta 4, como solo consideraremos caracteres alfabéticos, estos dos registros quedarán vacíos.
 
-En particular ¿cómo tratarías estos dos comentarios? ¿Simplemente los descartarías? ¿Los incluirías haciendo algún ajuste particular? ¿Alguna otra decisión que consideres adecuada para estos dos casos?
+En particular ¿cómo tratarías estos dos comentarios?
+
+los registros 1125 y 1788 que quedan vacíos después de eliminar todo excepto caracteres alfabéticos, consideraría las siguientes opciones, dependiendo de los objetivos del análisis y la naturaleza del conjunto de datos.
+
+¿Simplemente los descartarías?
+Si simplemente descartar los comentarios vacíos (registros 1125 y 1788) es una opción viable
+
+¿Los incluirías haciendo algún ajuste particular?
+Incluir los registros 1125 y 1788 con ajustes particulares puede ser una opción valiosa, especialmente si se desea mantener la integridad del conjunto de datos o si esos registros contienen información relevante expresada de manera no textual.
+
+ ¿Alguna otra decisión que consideres adecuada para estos dos casos?
+ las estrategias mencionadas para ajustar las reglas de limpieza o utilizar marcadores de posición, hay otras decisiones que podrías considerar para tratar con los registros 1125 y 1788 que quedan vacíos tras la limpieza inicial.
 
 **Incluye a continuación tus comentarios sobre la decisión que tomarías para el tratamiento en particular de estos dos registros, 1125 y 1788. Justifica tu respuesta.**
 """
@@ -201,9 +213,9 @@ df.iloc[1788,:]   # verificando tu salida
 """########################################################
 ##### **AGREGA AQUÍ TUS COMENTARIOS - Pregunta 3:**
 
+Cualquier decisión tomada debe aplicarse consistentemente a lo largo de todo el conjunto de datos para evitar sesgos o irregularidades en el análisis. La comunicación clara de estas decisiones en la metodología del estudio también es crucial para la reproducibilidad y la validez de la investigación.
 
-None
-
+En resumen, la pregunta 3 nos obliga a reflexionar sobre la importancia de adaptar las técnicas de preprocesamiento de datos a las necesidades específicas del análisis y a considerar cuidadosamente las consecuencias de excluir o modificar los datos en nuestras investigaciones
 
 
 ##### **FIN PARA AGREGAR TUS COMENTARIOS**
@@ -400,9 +412,13 @@ generate_wordcloud(negative_comments, "Nube de Palabras de Comentarios Negativos
 """######################################################################
 ###### **AGREGA AQUÍ TUS COMENTARIOS - Pregunta 6 - parte 3:**
 
+veo esta pregunta como una oportunidad excelente para aplicar técnicas visuales en el análisis de datos textuales. Las nubes de palabras son herramientas poderosas para la exploración de datos, ya que proporcionan una representación visual inmediata de los términos más frecuentes en un conjunto de textos, lo que puede ser muy útil para identificar rápidamente temas comunes o diferencias destacadas entre dos conjuntos de datos, en este caso, comentarios positivos y negativos.
 
-None
+La creación de nubes de palabras para diferentes clases de comentarios puede revelar no solo las palabras clave que caracterizan a cada grupo, sino también insights sobre el lenguaje y las emociones expresadas por los usuarios. Por ejemplo, podríamos esperar ver palabras como "excelente" o "perfecto" predominando en los comentarios positivos, mientras que palabras como "decepcionante" o "mal" podrían ser más comunes en los negativos.
 
+destaca la importancia de un buen preprocesamiento de texto. Antes de generar las nubes de palabras, es crucial aplicar técnicas como la lematización para consolidar diferentes formas de una palabra en una sola representación, lo que asegura que la visualización refleje de manera precisa la frecuencia de los conceptos en lugar de las variaciones lingüísticas.
+
+ las nubes de palabras generadas es un ejercicio crítico para desarrollar habilidades analíticas. No solo se trata de generar las visualizaciones, sino también de interpretarlas correctamente y extraer conclusiones válidas que puedan apoyar decisiones o futuras investigaciones
 
 ###### **FIN PARA AGREGAR TUS COMENTARIOS.**
 ######################################################################
@@ -693,32 +709,73 @@ print(conf_matrix_prop)
 
 ##############################################################################
 # AGREGA AQUÍ TUS LÍNEAS DE CÓDIGO - Pregunta 10:
+# Inicialización de modelos
+modelo10lr_tfidf = LogisticRegression()
+modelo10rf_tfidf = RandomForestClassifier()
+modelo10nb_tfidf = MultinomialNB()
 
+# Entrenamiento de modelos con TF-IDF
+modelo10lr_tfidf.fit(train_x_tfidf, y_train)
+modelo10rf_tfidf.fit(train_x_tfidf, y_train)
+modelo10nb_tfidf.fit(train_x_tfidf, y_train)
 
-modeloLRtfidf = LogisticRegression(max_iter=1000)
+# Predicciones en el conjunto de validación
+val_pred_lr = modelo10lr_tfidf.predict(val_x_tfidf)
+val_pred_rf = modelo10rf_tfidf.predict(val_x_tfidf)
+val_pred_nb = modelo10nb_tfidf.predict(val_x_tfidf)
 
-modeloRFtfidf = RandomForestClassifier(n_estimators=100)
+# Calcular la precisión para cada modelo en validación
+accuracy_lr = accuracy_score(y_val, val_pred_lr)
+accuracy_rf = accuracy_score(y_val, val_pred_rf)
+accuracy_nb = accuracy_score(y_val, val_pred_nb)
 
-modeloNBtfidf = MultinomialNB()
+print("Accuracy de Logistic Regression (TF-IDF):", accuracy_lr)
+print("Accuracy de Random Forest (TF-IDF):", accuracy_rf)
+print("Accuracy de Naive Bayes (TF-IDF):", accuracy_nb)
 
-# FIN PARA AGREGAR TUS LÍNEAS DE CÓDIGO.
+# Determinar el modelo con la mayor precisión en validación
+accuracies = {
+    'modelo10lr_tfidf': accuracy_lr,
+    'modelo10rf_tfidf': accuracy_rf,
+    'modelo10nb_tfidf': accuracy_nb
+}
+best_model_name = max(accuracies, key=accuracies.get)
+print("El mejor modelo basado en TF-IDF es:", best_model_name)
+
+# Evaluar el mejor modelo en el conjunto de prueba
+mejor_modelo_tfidf = eval(best_model_name)
+test_pred = mejor_modelo_tfidf.predict(test_x_tfidf)
+test_accuracy = accuracy_score(y_test, test_pred)
+print('Test-accuracy con el mejor modelo de TF-IDF: %.2f%%' % (100 * test_accuracy))
+
+# Mostrar la matriz de confusión
+conf_matrix = confusion_matrix(y_test, test_pred, labels=[0, 1])
+print('\nMatriz de confusión con el mejor modelo de TF-IDF:')
+print(conf_matrix)
+
+# Mostrar la matriz de confusión en proporciones
+conf_matrix_prop = conf_matrix / len(test_pred)
+print('\nMatriz de confusión con el mejor modelo de TF-IDF en proporciones:')
+print(conf_matrix_prop)
+
+# Impresión de resultados parciales con matrices tf-idf
+
 ##############################################################################
-
-
 print('Resultados parciales con matrices tf-idf:')
-print('\nLR: Train-accuracy: %.2f%%' % (100*modeloLRtfidf.score(train_x_tfidf, y_train)))
-print('LR: Val-accuracy: %2.f%%' % (100*modeloLRtfidf.score(val_x_tfidf, y_val)))
+print('\nLR: Train-accuracy: %.2f%%' % (100 * modelo10lr_tfidf.score(train_x_tfidf, y_train)))
+print('LR: Val-accuracy: %.2f%%' % (100 * modelo10lr_tfidf.score(val_x_tfidf, y_val)))
 
-print('\nRF: Train-accuracy: %.2f%%' % (100*modeloRFtfidf.score(train_x_tfidf, y_train)))
-print('RF: Val-accuracy: %.2f%%' % (100*modeloRFtfidf.score(val_x_tfidf, y_val)))
+print('\nRF: Train-accuracy: %.2f%%' % (100 * modelo10rf_tfidf.score(train_x_tfidf, y_train)))
+print('RF: Val-accuracy: %.2f%%' % (100 * modelo10rf_tfidf.score(val_x_tfidf, y_val)))
 
-print('\nNB: Train-accuracy: %.2f%%' % (100*modeloNBtfidf.score(train_x_tfidf, y_train)))
-print('NB: Val-accuracy: %.2f%%' % (100*modeloNBtfidf.score(val_x_tfidf, y_val)))
+print('\nNB: Train-accuracy: %.2f%%' % (100 * modelo10nb_tfidf.score(train_x_tfidf, y_train)))
+print('NB: Val-accuracy: %.2f%%' % (100 * modelo10nb_tfidf.score(val_x_tfidf, y_val)))
+# FIN PARA AGREGAR TUS LÍNEAS DE CÓDIGO.
 
 ##############################################################################
 # AGREGA AQUÍ EL NOMBRE DE TU MEJOR MODELO OBTENIDO CON TF-IDF:
 
-mejor_modelo_Tfidf = None # incluye el nombre, modeloXXtfidf, de tu mejor modelo.
+mejor_modelo_Tfidf = modelo10lr_tfidf
 
 # FIN PARA AGREGAR TUS LÍNEAS DE CÓDIGO.
 ##############################################################################
@@ -748,7 +805,13 @@ print(confusion_matrix(y_test, pred, labels=[0,1]) / pred.shape[0])
 ###### **AGREGA AQUÍ TUS CONCLUSIONES FINALES - Pregunta 11:**
 
 
-None
+Durante la actividad, evaluamos dos técnicas principales para la transformación de texto en características numéricas que son matrices de conteo y TF-IDF. Al comparar los resultados de los modelos entrenados con cada conjunto de características, encontré que el enfoque TF-IDF proporcionó un mejor rendimiento en términos de precisión y manejo de sobreajuste. Esto puede atribuirse a la capacidad de TF-IDF para mitigar el impacto de las palabras comunes que aparecen en muchos documentos pero que ofrecen poca información distintiva sobre el contenido específico de un documento.
+
+
+Cada tipo de error tiene sus propias implicaciones dependiendo del contexto de uso del modelo. En entornos donde es crucial captar cada instancia negativa, como en el monitoreo de contenido para detectar comentarios tóxicos o abusivos, un alto número de falsos negativos es especialmente problemático. En cambio, en un contexto de marketing, donde se podría priorizar la detección de comentarios positivos, los falsos positivos podrían llevar a una interpretación errónea de la recepción del cliente.
+
+El mejor modelo alcanzó una precisión del 75%, superando el umbral mínimo esperado del 72%, lo que sugiere una buena capacidad de generalización aunque aún hay espacio para mejorar, especialmente en la sensibilidad del modelo a los comentarios negativos.
+
 
 
 ###### **FIN PARA AGREGAR TUS CONCLUSIONES FINALES.**
